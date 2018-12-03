@@ -31,18 +31,45 @@ public class Person
   {
     return e;
   }
+  
+  private String zeroPad(String msg)
+  {
+  	if(msg.length() == 2)
+  	{
+  		msg = "0" + msg;
+  	}
+  	if(msg.length() == 1)
+  	{
+  		msg = "00" + msg;
+  	}
+  	
+  	return msg;
+  	
+  }
+  
 
   public long[] encryptTo(java.lang.String msg, Person she)
   {
-	  long[] returnLong = [msg.length()];
+	  	long[] returnLong = new long[msg.length()/2];
 	  
-	  for()
-	  {
-		  
-	  }
+      
+	    if(msg.length() % 2 != 0)
+	    {
+	    	msg = msg + "_";
+	    }
+	    
+	    
+	    for(int i = 0, a = 0; i <= msg.length()-1; i=i +2, a++)
+	    {
+	    	String s1 = zeroPad(Integer.toString((int)msg.charAt(i)));
+	    	String s2 = zeroPad(Integer.toString((int)msg.charAt(i+1)));
+	    	
+	    	returnLong[a] = RSA.modPower(Long.valueOf(s1+s2),she.e,she.m);
+	    }
 	  
 	  
-    return RSA.modPower(msg., she.e, she.m);
+	  
+    return returnLong;
   }
 
   public java.lang.String decrypt(long[] cipher)
