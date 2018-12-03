@@ -57,7 +57,7 @@ public class Person
 	    {
 	    	msg = msg + "_";
 	    }
-	    msg = "Hello World!".replaceAll("\\s","_");
+	    msg = msg.replaceAll("\\s","_");
 	    
 	    for(int i = 0, a = 0; i <= msg.length()-1; i=i +2, a++)
 	    {
