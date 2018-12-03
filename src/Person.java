@@ -57,7 +57,7 @@ public class Person
 	    {
 	    	msg = msg + "_";
 	    }
-	    
+	    msg = "Hello World!".replaceAll("\\s","_");
 	    
 	    for(int i = 0, a = 0; i <= msg.length()-1; i=i +2, a++)
 	    {
@@ -68,13 +68,30 @@ public class Person
 	    }
 	  
 	  
-	  
     return returnLong;
   }
 
   public java.lang.String decrypt(long[] cipher)
   {
-    return null;
+	  String returnString = "";
+	  
+	  for(int i = 0; i < cipher.length; i++)
+	  {
+		  String cString = String.valueOf(RSA.modPower(Long.valueOf(cipher[i]),d,m));
+		  
+		  if(cString.length() != 6)
+		  {
+			  cString = "0" + cString;
+		  }
+		  
+		  String.valueOf((Character.toString((char)(Integer.valueOf(cString.substring(0,3))).intValue()) + 
+				  		  Character.toString((char)(Integer.valueOf(cString.substring(3,6))).intValue())));
+		  
+		  returnString+=cString;
+	  }
+	  
+	  return returnString;
+	  
   }
 
 
