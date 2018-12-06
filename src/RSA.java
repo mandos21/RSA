@@ -81,8 +81,14 @@ public class RSA
 	
 	public static long relPrime(long n, java.util.Random rand)
 	{
+		rand = new Random();
+		int p = rand.nextint(10000);
 
-	  return null;
+		IF(P == 0)
+		{
+			return n;
+		}
+	  return findGCD(p, n % p);
 	}
 	
 	public static long toLong(java.lang.String msg, int p)
