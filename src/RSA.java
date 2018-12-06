@@ -57,7 +57,7 @@ public class RSA
 	{
 	  return null;
 	}
-	
+	// Quentin Terry
 	public static long randPrime(int m, int n, java.util.Random rand)
 	{
 		rand = new Random();
@@ -69,7 +69,7 @@ public class RSA
 		}
 		return random;
 	}
-
+	// Quentin Terry
 	public static boolean isPrime(int number) {
 		for (int i = 2; i < number; i++) {
 			if (number % i == 0) {
@@ -78,7 +78,7 @@ public class RSA
 		}
 		return true;
 	}
-	
+	// Quentin Terry
 	public static long relPrime(long n, java.util.Random rand)
 	{
 		rand = new Random();
