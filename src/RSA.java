@@ -10,6 +10,7 @@ public class RSA
 {
 	public static void main (String args[])
 	{
+
 		Person Alice = new Person();
 		Person Bob = new Person();
 	
@@ -33,6 +34,7 @@ public class RSA
 		show (cipher);
 	
 		System.out.println ("Alice decodes and reads: " + Alice.decrypt (cipher));
+
 	}
 
 	public RSA()
@@ -58,11 +60,28 @@ public class RSA
 	
 	public static long randPrime(int m, int n, java.util.Random rand)
 	{
-	  return null;
+		rand = new Random();
+		int random = rand.nextInt(n - m) + m;
+
+		while(!isPrime(random))
+		{
+			random = rand.nextInt(n - m) + m;
+		}
+		return random;
+	}
+
+	public static boolean isPrime(int number) {
+		for (int i = 2; i < number; i++) {
+			if (number % i == 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public static long relPrime(long n, java.util.Random rand)
 	{
+
 	  return null;
 	}
 	
