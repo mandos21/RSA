@@ -20,7 +20,6 @@ public class RSA
 		long tester = RSA.inverse(x, y);
 		System.out.println(tester);
 
-		Person Alice = new Person();
 
 		Person Bob = new Person();
 
@@ -99,10 +98,7 @@ public class RSA
 		return uLongs[0]; //MULTIPLICATIVE INVERSE => vLongs[0] cancels out at end
 	}
 
-	public static void show(long[] cipher)
-	{
 
-	}
 
 	/**
 	 * Raises a number (long), b, to the power p, modulo m.
@@ -206,12 +202,9 @@ public static long randPrime(int m, int n, java.util.Random rand)
 	public static long relPrime(long n, java.util.Random rand)
 	{
 		rand = new Random();
-		int p = rand.nextint(10000);
+		int p = rand.nextInt(10000);
 
-		IF(P == 0)
-		{
-			return n;
-		}
+
 	  return findGCD(p, n % p);
 	}
 
@@ -223,6 +216,11 @@ public static long randPrime(int m, int n, java.util.Random rand)
 	public static java.lang.String longTo2Chars(long x)
 	{
 	  return null;
+	}
+	
+	public static void show(long[] cipher)
+	{
+
 	}
 
 
