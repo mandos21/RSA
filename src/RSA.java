@@ -162,7 +162,7 @@ public class RSA
 	public static long avoidOverflow(long x, long y, long m)
 	{ //Watch out for overflow. When multiplying two n-bit values, the result requires 2*n bits. 
 		long result = 0;
-		while (y > 0) { //Halfing max value of (longs) first num, second num, and mod
+		while (y > 0) { //Halfing max value of (longs) second num until 0
 			//If the second number is odd, add x (mod m) to result
 			if (y % 2 == 1)
 				result = (result + x) % m;
@@ -170,7 +170,7 @@ public class RSA
 			x = (x * 2) % m; //Multiply first number by 2 (mod m)
 			y /= 2;
 		}
-		return result;
+		return result; //new quotient as result
 	}
 	
 	/**public static long randPrime(int m, int n, java.util.Random rand)
