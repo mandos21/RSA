@@ -12,10 +12,13 @@ public class Person
 
   public Person()
   {
-
-    p = RSA.randPrime(Integer.MAX_VALUE/4,Integer.MAX_VALUE, new Random());
-    q = RSA.randPrime(Integer.MAX_VALUE/4,Integer.MAX_VALUE, new Random());  
-    m = p*q;
+	//initializing all necessary variables
+    p = RSA.randPrime(Integer.MAX_VALUE/4,Integer.MAX_VALUE, new Random()); 
+    
+    do{ q = RSA.randPrime(Integer.MAX_VALUE/4,Integer.MAX_VALUE, new Random());}
+    while(q == p); //ensures p!=q
+    
+    m = p*q; //does not cause overflow conflict even when both p and q are MAX_VALUE
     n = (p-1)*(q-1);
     e = RSA.relPrime(n, new Random());
     d = RSA.inverse(e,m);

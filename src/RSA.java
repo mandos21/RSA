@@ -213,7 +213,7 @@ public static long randPrime(int m, int n, java.util.Random rand)
 	  return null;
 	}
 
-	public static java.lang.String longTo2Chars(long x)
+	public static java.lang.String long2Chars(long x)
 	{
 	  return null;
 	}
