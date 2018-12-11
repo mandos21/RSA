@@ -55,8 +55,8 @@ public class Person
     
 /**
  * Encrypt a plaintext message to she.
- * @param msg
- * @param she   
+ * @param msg	String, message to encrypt
+ * @param she   Person, to whom message will be sent
  * @author Matthew DeGenaro
  * @return  An array of longs, which is the cipher text
  */
@@ -81,7 +81,7 @@ public class Person
 
   /**
    * Decrypt the cipher text
-   * @param cipher
+   * @param cipher	long[], cipher to decrypt
    * @author Matthew DeGenaro
    * @return a string of plaintext
    */

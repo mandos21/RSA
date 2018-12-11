@@ -130,6 +130,7 @@ public class RSA
 
 	/**
 	 * Computes b^n for all powers of 2 to maxPower
+	 * 
 	 * @author Matt Moore
 	 * @param long b  		number being raised to power
 	 * @param int maxPower  the max n in 2^n
@@ -174,7 +175,7 @@ public class RSA
 
 	
 	/**
-	* Find a random prime number
+	* Find a random prime number in range m through n.
 	 * 
 	 * @param int m 	beginning of range
 	 * @param int n		end of range
@@ -212,7 +213,9 @@ public class RSA
 		}
 		return true;
 	}
-		/**
+	/**
+	 * Finds the greatest common denominator between variables a and b.
+	 * 
 	 * @author Quentin Terry
 	 * @param int a 
 	 * @param int b
@@ -228,6 +231,8 @@ public class RSA
 	    return a;
 	}
 	/**
+	 * Generates a random prime number less than and coprime to n.
+	 * 
 	 * @author Quentin Terry
 	 * @param int n
 	 * @param Random rand
