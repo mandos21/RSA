@@ -18,11 +18,11 @@ public class RSA
 		long y = 76408; //75
 
 		long tester = RSA.inverse(x, y);
-		System.out.println(tester);
+		//System.out.println(tester);
 		
 		Person Bob = new Person();
 
-		String msg = new String ("Bob, let's have lunch."); 	// message to be sent to Bob
+		String msg = new String ("Régime, dōjō, Müller, jalapeño, jäger, naïve, shōgun"); 	// message to be sent to Bob
 		long []  cipher;
 		cipher =  Alice.encryptTo(msg, Bob);			// encrypted, with Bob's public key
 
@@ -34,7 +34,7 @@ public class RSA
 									// with Bob's private key.
 		System.out.println ();
 
-		msg = new String ("No thanks, I'm busy");
+		msg = new String ("What are you talking about Alice?");
 		cipher = Bob.encryptTo (msg, Alice);
 
 		System.out.println ("Message is: " + msg);
