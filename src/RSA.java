@@ -53,9 +53,9 @@ public class RSA
 	/**
 	 * Finds the multiplicative inverse of a long e modulo m, using the extended euclidian algorithm
 	 * @author Matt Moore
-	 * @param e - digit (long) being inversed
-	 * @param m - modulo - long
-	 * @return long - The inverse of e (mod m)
+	 * @param long e  digit being inversed
+	 * @param long m  given modulo
+	 * @return long  The inverse of e (mod m)
 	 */
 	public static long inverse(long e, long m)
 	{
@@ -102,10 +102,10 @@ public class RSA
 	/**
 	 * Raises a number (long), b, to the power p, modulo m.
 	 * @author Matt Moore
-	 * @param b - long (number being raised to power)
-	 * @param p - long (exponent)
-	 * @param m - long (mod)
-	 * @return result (long) - b^p mod m
+	 * @param long b 	the number being raised to power
+	 * @param long p 	the given exponent
+	 * @param long m	the given modulus
+	 * @return long result  b^p mod m
 	 */
 	public static long modPower(long b, long p, long m)
 	{
@@ -131,10 +131,10 @@ public class RSA
 	/**
 	 * Computes b^n for all powers of 2 to maxPower
 	 * @author Matt Moore
-	 * @param b - long (number being raised to power)
-	 * @param maxPower - int (the max n in 2^n)
-	 * @param m - long (mod)
-	 * @return nPowers - array of longs (b^(2^n) for each n)
+	 * @param long b  		number being raised to power
+	 * @param int maxPower  the max n in 2^n
+	 * @param long m 		mod
+	 * @return long[] nPowers  array of longs (b^(2^n) for each n)
 	 */
 	public static long[] nPowers(long b, int maxPower, long m)
 	{
@@ -153,10 +153,10 @@ public class RSA
 	/**
 	 * Helper function performing multiplication on two n-bit values and avoid overflow
 	 * @author Matt Moore
-	 * @param x - long, multiplied (mod m)
-	 * @param y - long, multiplied (mod m)
-	 * @param m - long (mod)
-	 * @return result - long (mod m)
+	 * @param long x	 	multiplied (mod m)
+	 * @param long y	 	multiplied (mod m)
+	 * @param long m	 	given modulus
+	 * @return long result	 mod m
 	 */
 	public static long avoidOverflow(long x, long y, long m)
 	{ //Watch out for overflow. When multiplying two n-bit values, the result requires 2*n bits.
@@ -176,9 +176,9 @@ public class RSA
 	/**
 	* Find a random prime number
 	 * 
-	 * @param m
-	 * @param n
-	 * @param rand
+	 * @param int m 	beginning of range
+	 * @param int n		end of range
+	 * @param java.util.Random rand		used to generate random number
 	 * @author Quentin Terry
 	 * @return A random prime in the range m..n, using rand to generate the number
 
@@ -200,9 +200,9 @@ public class RSA
 	 * Returns a boolean variable corresponding to whether
 	 * or not the input number is prime
 	 * 
-	 * @param number
+	 * @param int number  to check primality
 	 * @author Quentin Terry
-	 * @return  true if number is prime, else false
+	 * @return  boolean 	true if number is prime, else false
 	 */
 	public static boolean isPrime(int number) {
 		for (int i = 2; i < number; i++) {
@@ -214,7 +214,7 @@ public class RSA
 	}
 		/**
 	 * @author Quentin Terry
-	 * @param int a
+	 * @param int a 
 	 * @param int b
 	 * @return gcd of two params
 	 */
@@ -249,9 +249,9 @@ public class RSA
 	}
 	/**
 	 * @author Matthew DeGenaro
-	 * @param msg
-	 * @param p
-	 * @return return two digit number beginning at position p of msg as a long int
+	 * @param String msg  	string to be retrieve ascii coded long from
+	 * @param int p			starting digit of part of string to retrieve (of two)
+	 * @return return long two digit number beginning at position p of msg as a long int
 	 */
 	public static long toLong(java.lang.String msg, int p)
 	{
@@ -264,8 +264,7 @@ public class RSA
 	}
 	/**
 	 * @author Matthew DeGenaro
-	 * @param msg
-	 * @param p
+	 * @param long x		long to retrieve ascii characters from
 	 * @return The string made up of two numeric digits representing x
 	 */
 	public static java.lang.String longTo2Chars(long x)
@@ -283,7 +282,7 @@ public class RSA
 	}
 	/**
 	 * @author Quentin Terry
-	 * @param cipher
+	 * @param long[] cipher
 	 * Display an array of longs in stdout
 	 */
 	public static void show(long[] cipher)
@@ -302,8 +301,8 @@ public class RSA
 	 * program would be able to handle it, so I added it anyway. 
 	 * 
 	 * @author Matthew DeGenaro
-	 * @param msg string to which 1 or 2 zeros is padded at the front
-	 * @return padded msg
+	 * @param string msg		 to which 1 or 2 zeros is padded at the front
+	 * @return string msg		padded variant of input
 	 */
  	private static String zeroPad(String msg)
  	{
