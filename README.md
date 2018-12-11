@@ -1,4 +1,5 @@
-# RSA
+# RSA Documentation
+
 RSA (Rivest–Shamir–Adleman) Encryption Implementation made in Java
 
 ---->  Directions http://cs.rowan.edu/~bergmann/crypto/projects/project3/project3.html
@@ -25,3 +26,6 @@ Bob sends:
 
 Alice decodes and reads: What are you talking about Alice? 
 
+# Potential Improvements
+
+If we had more time, we were considering upping the block size to something really large for added security, padding the remaning space with randomly generated characters.
