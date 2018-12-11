@@ -50,7 +50,7 @@ public class RSA
 	
 	public static void show(long[] cipher)
 	{
-	
+		System.out.println(Arrays.toString(cipher));
 	}
 	
 	public static long modPower(long b, long p, long m)
@@ -78,27 +78,48 @@ public class RSA
 		}
 		return true;
 	}
+	//Quentin Terry
+		private static int gcd(int a, int b) {
+	    int t;
+	    while(b != 0){
+	        t = a;
+	        a = b;
+	        b = t%b;
+	    }
+	    return a;
+	}
 	// Quentin Terry
 	public static long relPrime(long n, java.util.Random rand)
 	{
 		rand = new Random();
-		int p = rand.nextint(10000);
-
-		IF(P == 0)
+		
+		int i = rand.nextInt(1000);
+		if(gcd((int)n,i) == 1 && i < n)
 		{
-			return n;
+			return i;
 		}
-	  return findGCD(p, n % p);
+
+		return relPrime(n, new Random());
+		
+
 	}
-	
+	//Quentin Terry
 	public static long toLong(java.lang.String msg, int p)
 	{
-	  return null;
+		
+		char c = msg.charAt(p);
+		long l1 = c;
+
+		
+	  return l1;
 	}
-	
+	//Quentin Terry
 	public static java.lang.String longTo2Chars(long x)
 	{
-	  return null;
+		char c = (char) x;
+
+	  return Character.toString(c);
+	  
 	}
 
 
