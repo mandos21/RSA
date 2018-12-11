@@ -21,6 +21,7 @@ public class RSA
 		System.out.println(tester);
 
 
+
 		Person Bob = new Person();
 
 		String msg = new String ("Bob, let's have lunch."); 	// message to be sent to Bob
@@ -140,7 +141,7 @@ public class RSA
 	public static long[] nPowers(long b, int maxPower, long m)
 	{
 		//Saving computed powers of b^(2^n) for each n, and sending back its array
-		long[] nPowers = new long[maxPower];
+		long[] nPowers = new long[maxPower+1];
 		long base = b;
 		nPowers[0] = b; //base case
 

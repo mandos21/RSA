@@ -8,6 +8,7 @@ public class Person
   private long p;
   private long q;
   private long n;
+  private long z;
 
 
   public Person()
@@ -21,7 +22,7 @@ public class Person
     m = p*q; //does not cause overflow conflict even when both p and q are MAX_VALUE
     n = (p-1)*(q-1);
     e = RSA.relPrime(n, new Random());
-    d = RSA.inverse(e,m);
+    d = RSA.inverse(e,n);
     
   }
 
@@ -53,14 +54,13 @@ public class Person
 
   public long[] encryptTo(java.lang.String msg, Person she)
   {
-	  	long[] returnLong = new long[msg.length()/2];
 	  
-      
+	  	msg = msg.replaceAll("\\s","_");
 	    if(msg.length() % 2 != 0)
 	    {
 	    	msg = msg + "_";
 	    }
-	    msg = msg.replaceAll("\\s","_");
+	  	long[] returnLong = new long[msg.length()/2];
 	    
 	    for(int i = 0, a = 0; i <= msg.length()-1; i=i +2, a++)
 	    {
@@ -68,6 +68,12 @@ public class Person
 	    	String s2 = zeroPad(Integer.toString((int)msg.charAt(i+1)));
 	    	
 	    	returnLong[a] = RSA.modPower(Long.valueOf(s1+s2),she.e,she.m);
+	    	
+	    	//debug purposes
+	    	if( a == 0)
+	    	{
+	    		z = Long.valueOf(s1+s2);
+	    	}
 	    }
 	  
 	  
@@ -77,6 +83,7 @@ public class Person
   public java.lang.String decrypt(long[] cipher)
   {
 	  String returnString = "";
+	  String addString = "";
 	  
 	  for(int i = 0; i < cipher.length; i++)
 	  {
@@ -87,12 +94,15 @@ public class Person
 			  cString = "0" + cString;
 		  }
 		  
-		  String.valueOf((Character.toString((char)(Integer.valueOf(cString.substring(0,3))).intValue()) + 
-				  		  Character.toString((char)(Integer.valueOf(cString.substring(3,6))).intValue())));
+		  addString = (Character.toString((char)(Integer.valueOf(cString.substring(0,3))).intValue()) + 
+				  		  Character.toString((char)(Integer.valueOf(cString.substring(3,6))).intValue()));
 		  
-		  returnString+=cString;
+		  
+		  
+		  returnString+=addString;
 	  }
 	  
+	  returnString = returnString.replaceAll("_"," ");
 	  return returnString;
 	  
   }
