@@ -1,6 +1,8 @@
-# RSA Documentation
+# RSA 
 
 RSA (Rivest–Shamir–Adleman) Encryption Implementation made in Java
+
+## Documentation
 
 ---->  Directions http://cs.rowan.edu/~bergmann/crypto/projects/project3/project3.html
 
@@ -8,7 +10,7 @@ RSA (Rivest–Shamir–Adleman) Encryption Implementation made in Java
 
 ----> Person Class API https://mandos21.github.io/RSA/Person.html
 
-# Session Transcript
+## Session Transcript
 
 Message is: Régime, dōjō, Müller, jalapeño, jäger, naïve, shōgun
 
@@ -26,6 +28,6 @@ Bob sends:
 
 Alice decodes and reads: What are you talking about Alice? 
 
-# Potential Improvements
+## Potential Improvements
 
 If we had more time, we were considering upping the block size to something really large for added security, padding the remaning space with randomly generated characters.
