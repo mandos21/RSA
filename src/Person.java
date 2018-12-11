@@ -24,7 +24,7 @@ public class Person
     p = RSA.randPrime(Integer.MAX_VALUE/16,Integer.MAX_VALUE/8, new Random()); 
     
     do{ q = RSA.randPrime(Integer.MAX_VALUE/16,Integer.MAX_VALUE/8, new Random());}
-    while(q == p); //ensures p!=q 
+    while(q == p); //ensures p!=q, likely will never loop
     
     m = p*q; //does not cause overflow conflict even when both p and q are MAX_VALUE
     n = (p-1)*(q-1);
@@ -66,13 +66,13 @@ public class Person
 
 	    if(msg.length() % 2 != 0)
 	    {
-	    	msg = msg + "_";
+	    	msg = msg + "_";								//ensure loop doesn't break on odd numbers
 	    }
 	  	long[] returnLong = new long[msg.length()/2];
 	    
 	    for(int i = 0, a = 0; i <= msg.length()-1; i=i +2, a++)
 	    {
-	    	returnLong[a] = RSA.modPower(RSA.toLong(msg, i),she.e,she.m);
+	    	returnLong[a] = RSA.modPower(RSA.toLong(msg, i),she.e,she.m);		//encrypt and add to array of blocks to be returned
 	    }
 	  
 	  
@@ -90,8 +90,8 @@ public class Person
 	  String returnString = "";
 	  for(int i = 0; i < cipher.length; i++)
 	  {
-		  long cLong = RSA.modPower(Long.valueOf(cipher[i]),d,m);
-		  returnString+=RSA.longTo2Chars(cLong);
+		  long cLong = RSA.modPower(Long.valueOf(cipher[i]),d,m); 	//decrypt into long
+		  returnString+=RSA.longTo2Chars(cLong); 					//convert to string and append to return
 	  }
 	  
 	  returnString = returnString.replaceAll("_"," ");
