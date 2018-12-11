@@ -197,30 +197,92 @@ public static long randPrime(int m, int n, java.util.Random rand)
 		}
 		return true;
 	}
-
-	// Quentin Terry
+		/**
+	 * @author Quentin Terry
+	 * @param int a
+	 * @param int b
+	 * @return gcd of two params
+	 */
+	private static int gcd(int a, int b) {
+	    int t;
+	    while(b != 0){
+	        t = a;
+	        a = b;
+	        b = t%b;
+	    }
+	    return a;
+	}
+	/**
+	 * @author Quentin Terry
+	 * @param int a
+	 * @param int b
+	 * @return gcd of two params
+	 */
+	private static int gcd(int a, int b) {
+	    int t;
+	    while(b != 0){
+	        t = a;
+	        a = b;
+	        b = t%b;
+	    }
+	    return a;
+	}
+	/**
+	 * @author Quentin Terry
+	 * @param int n
+	 * @param Random rand
+	 * @return random number relative to n
+	 */
 	public static long relPrime(long n, java.util.Random rand)
 	{
 		rand = new Random();
-		int p = rand.nextInt(10000);
+		
+		int i = rand.nextInt(1000);
+		if(gcd((int)n,i) == 1 && i < n)
+		{
+			return i;
+		}
 
+		return relPrime(n, new Random());
+		
 
-	  return findGCD(p, n % p);
 	}
-
+	/**
+	 * @author Quentin Terry
+	 * @param msg
+	 * @param p
+	 * @return return two digit number beginning at position p of msg as a long int
+	 */
 	public static long toLong(java.lang.String msg, int p)
 	{
-	  return null;
-	}
+		
+		char c = msg.charAt(p);
+		long l1 = c;
 
-	public static java.lang.String long2Chars(long x)
-	{
-	  return null;
+		
+	  return l1;
 	}
-	
+	/**
+	 * @author Quentin Terry
+	 * @param msg
+	 * @param p
+	 * @return The string made up of two numeric digits representing x
+	 */
+	public static java.lang.String longTo2Chars(long x)
+	{
+		char c = (char) x;
+
+	  return Character.toString(c);
+	  
+	}
+	/**
+	 * @author Quentin Terry
+	 * @param cipher
+	 * Display an array of longs in stdout
+	 */
 	public static void show(long[] cipher)
 	{
-
+		System.out.println(Arrays.toString(cipher));
 	}
 
 
