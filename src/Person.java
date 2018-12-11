@@ -11,6 +11,13 @@ public class Person
   private long z;
 
 
+  /**
+   * Generate a public key for this person, consisting of exponent,e, and modulus, m.
+   * Generate a private key, consisting of an exponent, d.
+   * Provide access to the public key only.
+   * 
+   * @author Matthew DeGenaro
+   */
   public Person()
   {
 	//initializing all necessary variables
@@ -26,36 +33,37 @@ public class Person
     
   }
 
+  /**
+   * Access the public modulus
+   * @return the public modulus for this Person
+   * @author Matthew DeGenaro
+   */
   public long getM()
   {
     return m;
   }
 
+  /**
+   * Access the public encryption exponent
+   * @return the public encryption exponent for this Person
+   * @author Matthew DeGenaro
+   */
   public long getE()
   {
     return e;
   }
-  
-  private String zeroPad(String msg)
-  {
-  	if(msg.length() == 2)
-  	{
-  		msg = "0" + msg;
-  	}
-  	if(msg.length() == 1)
-  	{
-  		msg = "00" + msg;
-  	}
-  	
-  	return msg;
-  	
-  }
-  
-
+    
+/**
+ * Encrypt a plaintext message to she.
+ * @param msg
+ * @param she   
+ * @author Matthew DeGenaro
+ * @return  An array of longs, which is the cipher text
+ */
   public long[] encryptTo(java.lang.String msg, Person she)
   {
 	  
-	  	msg = msg.replaceAll("\\s","_");
+
 	    if(msg.length() % 2 != 0)
 	    {
 	    	msg = msg + "_";
@@ -64,42 +72,26 @@ public class Person
 	    
 	    for(int i = 0, a = 0; i <= msg.length()-1; i=i +2, a++)
 	    {
-	    	String s1 = zeroPad(Integer.toString((int)msg.charAt(i)));
-	    	String s2 = zeroPad(Integer.toString((int)msg.charAt(i+1)));
-	    	
-	    	returnLong[a] = RSA.modPower(Long.valueOf(s1+s2),she.e,she.m);
-	    	
-	    	//debug purposes
-	    	if( a == 0)
-	    	{
-	    		z = Long.valueOf(s1+s2);
-	    	}
+	    	returnLong[a] = RSA.modPower(RSA.toLong(msg, i),she.e,she.m);
 	    }
 	  
 	  
     return returnLong;
   }
 
+  /**
+   * Decrypt the cipher text
+   * @param cipher
+   * @author Matthew DeGenaro
+   * @return a string of plaintext
+   */
   public java.lang.String decrypt(long[] cipher)
   {
 	  String returnString = "";
-	  String addString = "";
-	  
 	  for(int i = 0; i < cipher.length; i++)
 	  {
-		  String cString = String.valueOf(RSA.modPower(Long.valueOf(cipher[i]),d,m));
-		  
-		  if(cString.length() != 6)
-		  {
-			  cString = "0" + cString;
-		  }
-		  
-		  addString = (Character.toString((char)(Integer.valueOf(cString.substring(0,3))).intValue()) + 
-				  		  Character.toString((char)(Integer.valueOf(cString.substring(3,6))).intValue()));
-		  
-		  
-		  
-		  returnString+=addString;
+		  long cLong = RSA.modPower(Long.valueOf(cipher[i]),d,m);
+		  returnString+=RSA.longTo2Chars(cLong);
 	  }
 	  
 	  returnString = returnString.replaceAll("_"," ");

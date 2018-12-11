@@ -19,9 +19,7 @@ public class RSA
 
 		long tester = RSA.inverse(x, y);
 		System.out.println(tester);
-
-
-
+		
 		Person Bob = new Person();
 
 		String msg = new String ("Bob, let's have lunch."); 	// message to be sent to Bob
@@ -174,9 +172,18 @@ public class RSA
 		return result; //new quotient as result
 	}
 
-	// Quentin Terry
+	
+	/**
+	* Find a random prime number
+	 * 
+	 * @param m
+	 * @param n
+	 * @param rand
+	 * @author Quentin Terry
+	 * @return A random prime in the range m..n, using rand to generate the number
 
-public static long randPrime(int m, int n, java.util.Random rand)
+	 */
+	public static long randPrime(int m, int n, java.util.Random rand)
 
 	{
 		rand = new Random();
@@ -189,7 +196,14 @@ public static long randPrime(int m, int n, java.util.Random rand)
 		return random;
 	}
 
-	// Quentin Terry
+	/**
+	 * Returns a boolean variable corresponding to whether
+	 * or not the input number is prime
+	 * 
+	 * @param number
+	 * @author Quentin Terry
+	 * @return  true if number is prime, else false
+	 */
 	public static boolean isPrime(int number) {
 		for (int i = 2; i < number; i++) {
 			if (number % i == 0) {
@@ -234,7 +248,7 @@ public static long randPrime(int m, int n, java.util.Random rand)
 
 	}
 	/**
-	 * @author Quentin Terry
+	 * @author Matthew DeGenaro
 	 * @param msg
 	 * @param p
 	 * @return return two digit number beginning at position p of msg as a long int
@@ -242,23 +256,29 @@ public static long randPrime(int m, int n, java.util.Random rand)
 	public static long toLong(java.lang.String msg, int p)
 	{
 		
-		char c = msg.charAt(p);
-		long l1 = c;
+		String s1 = zeroPad(Integer.toString((int)msg.charAt(p)));
+    	String s2 = zeroPad(Integer.toString((int)msg.charAt(p+1)));
 
 		
-	  return l1;
+    	return Long.valueOf(s1+s2);
 	}
 	/**
-	 * @author Quentin Terry
+	 * @author Matthew DeGenaro
 	 * @param msg
 	 * @param p
 	 * @return The string made up of two numeric digits representing x
 	 */
 	public static java.lang.String longTo2Chars(long x)
 	{
-		char c = (char) x;
-
-	  return Character.toString(c);
+		String cString = String.valueOf(x);
+		
+		if(cString.length() != 6)
+		  {
+			  cString = "0" + cString;
+		  }
+		
+		return (Character.toString((char)(Integer.valueOf(cString.substring(0,3))).intValue()) + 
+		  		Character.toString((char)(Integer.valueOf(cString.substring(3,6))).intValue()));
 	  
 	}
 	/**
@@ -270,6 +290,35 @@ public static long randPrime(int m, int n, java.util.Random rand)
 	{
 		System.out.println(Arrays.toString(cipher));
 	}
+
+	
+	/**
+	 * In order for the decryption method to properly parse asymmetrical 
+	 * combinations of 2 and 3 bit ascii codes, 0s are padded to anything
+	 * less than 3 digits.
+	 * 
+	 * I know for the purposes of this project extended ascii characters
+	 * won't likely need to be encrypted, but any fairly robust encryption
+	 * program would be able to handle it, so I added it anyway. 
+	 * 
+	 * @author Matthew DeGenaro
+	 * @param msg string to which 1 or 2 zeros is padded at the front
+	 * @return padded msg
+	 */
+ 	private static String zeroPad(String msg)
+ 	{
+	  	if(msg.length() == 2)
+	  	{
+	  		msg = "0" + msg;
+	  	}
+	  	if(msg.length() == 1)
+	  	{
+	  		msg = "00" + msg;
+	  	}
+	  	
+	  	return msg;
+	  	
+ 	}
 
 
 }
