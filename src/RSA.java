@@ -203,23 +203,8 @@ public static long randPrime(int m, int n, java.util.Random rand)
 	 * @param int b
 	 * @return gcd of two params
 	 */
-	private static int gcd(int a, int b) {
-	    int t;
-	    while(b != 0){
-	        t = a;
-	        a = b;
-	        b = t%b;
-	    }
-	    return a;
-	}
-	/**
-	 * @author Quentin Terry
-	 * @param int a
-	 * @param int b
-	 * @return gcd of two params
-	 */
-	private static int gcd(int a, int b) {
-	    int t;
+	private static long gcd(long a, long b) {
+	    long t;
 	    while(b != 0){
 	        t = a;
 	        a = b;
@@ -237,8 +222,8 @@ public static long randPrime(int m, int n, java.util.Random rand)
 	{
 		rand = new Random();
 		
-		int i = rand.nextInt(1000);
-		if(gcd((int)n,i) == 1 && i < n)
+		long i = rand.nextInt(100000);
+		if(gcd(n,i) == 1 && i < n)
 		{
 			return i;
 		}
